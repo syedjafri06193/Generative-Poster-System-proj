@@ -60,6 +60,33 @@ the [design & build guide](1—Documentation/design-guide.md), the
 [grammar reference](1—Documentation/v1/grammar-reference.md) and the
 [Studio guide](1—Documentation/v1/studio.md).
 
+<!-- project-metrics:start -->
+## Project Metrics
+
+[![Stars](https://img.shields.io/github/stars/syedjafri06193/Generative-Poster-System-proj?style=flat-square)](https://github.com/syedjafri06193/Generative-Poster-System-proj/stargazers) [![Forks](https://img.shields.io/github/forks/syedjafri06193/Generative-Poster-System-proj?style=flat-square)](https://github.com/syedjafri06193/Generative-Poster-System-proj/forks) [![Open issues](https://img.shields.io/github/issues/syedjafri06193/Generative-Poster-System-proj?style=flat-square)](https://github.com/syedjafri06193/Generative-Poster-System-proj/issues) [![Last commit](https://img.shields.io/github/last-commit/syedjafri06193/Generative-Poster-System-proj/improvements?style=flat-square)](https://github.com/syedjafri06193/Generative-Poster-System-proj/commits/improvements) [![Commits](https://img.shields.io/github/commit-activity/t/syedjafri06193/Generative-Poster-System-proj?style=flat-square)](https://github.com/syedjafri06193/Generative-Poster-System-proj/commits/improvements) [![Top language](https://img.shields.io/github/languages/top/syedjafri06193/Generative-Poster-System-proj?style=flat-square)](https://github.com/syedjafri06193/Generative-Poster-System-proj) [![Repo size](https://img.shields.io/github/repo-size/syedjafri06193/Generative-Poster-System-proj?style=flat-square)](https://github.com/syedjafri06193/Generative-Poster-System-proj)
+
+### Code
+
+| Metric | Value |
+|---|---|
+| Lines of code | 3,116 |
+| Source files | 61 |
+| Tracked files | 99 |
+| Documentation | 9 Markdown files (11,954 words), 1 PDF |
+| Commits | 8 |
+| Contributors | 1 |
+| Active | 2026-09-11 → 2026-10-29 |
+
+| Language | Lines | Share |
+|---|---:|---:|
+| TypeScript | 2,878 | 92.4% |
+| Python | 117 | 3.8% |
+| HTML | 69 | 2.2% |
+| JavaScript | 52 | 1.7% |
+
+<sub>Code stats as of 2026-10-29, counted with pygount (comments and blank lines excluded). Badges update live.</sub>
+<!-- project-metrics:end -->
+
 ## Licence
 
 Code: [MIT](LICENSE). Bundled fonts: Inter (SIL OFL 1.1) and TeX Gyre Termes
