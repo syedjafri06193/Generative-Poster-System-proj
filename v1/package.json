@@ -1,0 +1,46 @@
+{
+  "name": "generative-poster-system",
+  "version": "1.0.0",
+  "description": "Deterministic, print-ready generative posters",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "node tools/lint-determinism.mjs",
+    "test": "vitest run",
+    "test:browser": "npm run studio:build && node tests/browser/determinism.mjs",
+    "verify": "tsx scripts/verify.ts",
+    "demo": "tsx scripts/demo.ts",
+    "export": "tsx scripts/export.ts",
+    "render": "tsx scripts/render.ts",
+    "batch": "tsx scripts/batch.ts",
+    "tune": "tsx scripts/tune.ts",
+    "fixtures": "tsx scripts/fixtures.ts",
+    "studio": "vite -c studio/vite.config.ts",
+    "studio:build": "vite build -c studio/vite.config.ts",
+    "pdfx-check": "python3 tools/pdfx_check.py"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@noble/hashes": "^2.4.0",
+    "fflate": "^0.8.3",
+    "harfbuzzjs": "^1.6.4",
+    "lcms-wasm": "^1.0.5",
+    "qrcode-generator": "^1.5.2"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/node": "^26.6.6",
+    "@types/pngjs": "^6.0.5",
+    "jsqr": "^1.4.0",
+    "pixelmatch": "^8.0.0",
+    "pngjs": "^7.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.5",
+    "vitest": "^5.0.5"
+  },
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20.11"
+  }
+}
