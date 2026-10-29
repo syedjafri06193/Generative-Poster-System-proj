@@ -1,0 +1,45 @@
+{
+  "name": "poster-grid",
+  "version": 1,
+  "description": "Swiss-style event posters: modular and column grids, Inter or Termes with Inter, OKLCH palettes that survive FOGRA39, geometric ornament fields.",
+  "canvas": { "sizes": ["A2", "A3", "18x24in"], "press": "fogra39-coated" },
+  "grid": {
+    "systems": ["column", "modular", "broken"],
+    "columns": [4, 8],
+    "gutterBaselines": [1, 2],
+    "marginBaselines": [3, 5],
+    "baselinePt": [16, 26],
+    "rows": [4, 8]
+  },
+  "type": {
+    "families": [
+      { "display": "inter-black", "body": "inter-regular", "caption": "inter-medium" },
+      { "display": "inter-bold", "body": "inter-regular", "caption": "inter-medium" },
+      { "display": "termes-bold", "body": "termes-regular", "caption": "inter-medium" }
+    ],
+    "textRatios": [1.2, 1.25, 1.333],
+    "displayRatios": [1.5, 1.618, 2],
+    "maxLevels": 6,
+    "measureChars": [45, 75],
+    "bodyLeading": [1.35, 1.55],
+    "headlineMaxLines": 4
+  },
+  "palette": {
+    "strategies": ["monochrome", "analogous", "complementary", "split-complementary", "triadic"],
+    "lightnessRange": [0.45, 0.85],
+    "chromaRange": [0.06, 0.2],
+    "colorCount": [1, 3],
+    "grounds": ["light", "light", "light", "dark", "black"],
+    "minDistance": 8,
+    "requireGamutSafe": true
+  },
+  "composition": {
+    "templates": ["headline-top", "headline-bottom", "split-field", "column-stack"],
+    "ornaments": ["bars", "discs", "blocks", "rules", "none"],
+    "minWhitespaceRatio": 0.25,
+    "allowRotation": false,
+    "imagePolicy": "none"
+  },
+  "constraints": ["measure", "safety-margin", "min-stroke", "tac", "no-collision", "contrast", "baseline-grid", "inside-media"],
+  "maxAttempts": 40
+}

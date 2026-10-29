@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Poster Studio</title>
+<style>
+  :root { --bg:#f4f2ee; --panel:#fff; --ink:#1b1a18; --muted:#6d6a64; --line:#dcd8d0; --accent:#c8402a; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141413; --panel:#1e1d1b; --ink:#ecebe7; --muted:#9a968e; --line:#33312d; --accent:#e8664f; color-scheme: dark; } }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.45 system-ui, sans-serif; background:var(--bg); color:var(--ink); display:grid; grid-template-columns: 320px 1fr; min-height:100vh; }
+  aside { background:var(--panel); border-right:1px solid var(--line); padding:16px; overflow:auto; }
+  h1 { font-size:15px; letter-spacing:.04em; text-transform:uppercase; margin:0 0 16px; }
+  h2 { font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:20px 0 8px; }
+  label { display:block; font-size:12px; color:var(--muted); margin:8px 0 3px; }
+  input[type=text], textarea, select { width:100%; padding:7px 8px; border:1px solid var(--line); border-radius:6px; background:transparent; color:inherit; font:inherit; }
+  textarea { min-height:70px; resize:vertical; }
+  .row { display:flex; gap:6px; align-items:center; }
+  button { padding:7px 10px; border:1px solid var(--line); background:transparent; color:inherit; border-radius:6px; cursor:pointer; font:inherit; }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  button:disabled { opacity:.5; cursor:default; }
+  .check { display:flex; gap:6px; align-items:center; margin:4px 0; font-size:13px; }
+  main { padding:20px; overflow:auto; }
+  #preview { display:flex; justify-content:center; }
+  #preview svg { height:calc(100vh - 140px); width:auto; max-width:100%; box-shadow:0 8px 30px rgba(0,0,0,.18); }
+  #status { font-size:12px; color:var(--muted); margin-bottom:12px; min-height:18px; font-variant-numeric: tabular-nums; }
+  #issues li { font-size:12px; } .error { color:var(--accent); }
+  #grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:14px; }
+  #grid figure { margin:0; cursor:pointer; } #grid svg { width:100%; height:auto; background:#fff; box-shadow:0 2px 10px rgba(0,0,0,.15); }
+  #grid figcaption { font-size:11px; color:var(--muted); margin-top:4px; font-variant-numeric: tabular-nums; }
+  .tabs { display:flex; gap:6px; margin-bottom:12px; } .tabs button[aria-pressed=true] { border-color:var(--ink); }
+  #ab { display:grid; grid-template-columns:1fr 1fr; gap:16px; } #ab svg { width:100%; height:auto; background:#fff; }
+  @media (max-width: 760px) { body { grid-template-columns:1fr; } aside { border-right:0; border-bottom:1px solid var(--line); } }
+</style>
+</head>
+<body>
+<aside>
+  <h1>Poster Studio</h1>
+  <label for="seed">Seed</label>
+  <div class="row"><input id="seed" type="text" spellcheck="false" /><button id="random" title="Random seed">⟳</button></div>
+  <label for="grammar">Grammar</label><select id="grammar"></select>
+  <h2>Brief</h2>
+  <label for="headline">Headline</label><input id="headline" type="text" />
+  <label for="subhead">Subhead</label><input id="subhead" type="text" />
+  <label for="body">Body</label><textarea id="body"></textarea>
+  <label for="details">Details (one per line)</label><textarea id="details"></textarea>
+  <h2>View</h2>
+  <div class="check"><input type="checkbox" id="guides" /><label for="guides" style="margin:0">Trim, bleed &amp; safety guides</label></div>
+  <div class="check"><input type="checkbox" id="ink" /><label for="ink" style="margin:0">Ink coverage map (TAC)</label></div>
+  <div class="check"><input type="checkbox" id="bleed" checked /><label for="bleed" style="margin:0">Show bleed</label></div>
+  <div class="row" style="margin-top:8px"><button id="replay">▶ Replay decisions</button></div>
+  <h2>Export</h2>
+  <div class="row"><button id="pdf" class="primary">PDF/X-4</button><button id="svg">SVG</button><button id="json">Model JSON</button></div>
+  <div class="row" style="margin-top:6px; flex-wrap:wrap"><button id="card">Seed card PDF</button><button id="riso">Riso proof</button><button id="series">Series ×4 (HTML)</button><button id="tiles">Tiles 2×2 (PDF)</button></div>
+  <h2>Preflight</h2>
+  <ul id="issues"></ul>
+  <h2>Preferences</h2>
+  <div class="row"><span id="prefcount">0 recorded</span><button id="prefs">Export prefs.json</button></div>
+</aside>
+<main>
+  <div class="tabs"><button data-tab="single" aria-pressed="true">Poster</button><button data-tab="batch" aria-pressed="false">Batch</button><button data-tab="compare" aria-pressed="false">Compare A/B</button></div>
+  <div id="status"></div>
+  <section id="single"><div id="preview"></div></section>
+  <section id="batch" hidden><div class="row" style="margin-bottom:12px"><button id="runbatch">Generate 48, show best 12</button></div><div id="grid"></div></section>
+  <section id="compare" hidden><p style="color:var(--muted)">Pick the better poster. Choices train the scoring weights (<code>npm run tune -- prefs.json</code>).</p><div id="ab"></div></section>
+</main>
+<script type="module" src="./main.ts"></script>
+</body>
+</html>
